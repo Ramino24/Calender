@@ -10,7 +10,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="calendar">
+    <div class="container">
+        <div class="calendar">
         <div class="header">
             <div id="prev" class="btn"><i class="fa-solid fa-arrow-left"></i></div>
             <div id="month-year"></div>
@@ -26,6 +27,17 @@
             <div>Sat</div>
         </div>
         <div class="days" id="days"></div>
+    </div>
+
+
+    <div class="task-panel">
+        <h3 id="selected-date">Select a date to manage tasks</h3>
+        <div class="task-input-container">
+            <input type="text" id="task-input" class="task-input" placeholder="Enter a task..." disabled>
+            <button id="add-task-btn" class="add-task-btn" disabled>Add</button>
+        </div>
+        <ul id="task-list" class="task-list"></ul>
+    </div>
     </div>
     <script src="index.js"></script>
 </body>

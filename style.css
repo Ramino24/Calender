@@ -2,9 +2,19 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
     place-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background-color: #333333;
+    padding: 20px; 
+    box-sizing: border-box;
+}
+
+
+.container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .calendar {
@@ -12,7 +22,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 30px #222222;
     overflow: hidden;
-    width: 300px;
+    width: 350px;
     color: white;
     padding: 20px;
 }
@@ -43,10 +53,23 @@ body {
 }
 
 .weekdays div, .days div {
-    width: 14.28%;
+    /* width: 14.28%;
     text-align: center;
     padding: 10px 0;
+    border-radius: 5px; */
+
+    width: 14.28%;
+    text-align: center;
+    padding: 8px 2px;
     border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    height: 40px; /* ADD THIS - fixed height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* CHANGE from flex-start to center */
+    overflow: hidden;
 }
 
 .days div {
@@ -67,3 +90,131 @@ body {
 .days .fade {
     color: #555;
 }
+
+
+
+
+.days .has-tasks {
+    border-bottom: 3px solid #4CAF50;
+}
+
+
+
+.task-panel {
+    background-color: #111111;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #222222;
+    width: 350px;
+    color: white;
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.task-panel h3 {
+    margin-top: 0;
+    color: orangered;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.task-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+
+.task-input::placeholder {
+    color: #aaa;
+}
+
+.add-task-btn {
+    padding: 10px 15px;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-task-btn:hover {
+    background-color: #ff4500;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    background-color: #222;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-text {
+    flex: 1;
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.task-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.complete-btn:hover {
+    background-color: #4CAF50;
+}
+
+.delete-btn:hover {
+    background-color: #f44336;
+}
+
+.no-tasks {
+    color: #aaa;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .calendar, .task-panel {
+        width: 100%;
+        max-width: 350px;
+    }
+} */
