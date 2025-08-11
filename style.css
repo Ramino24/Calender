@@ -207,7 +207,7 @@ body {
     font-style: italic;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
     .container {
         flex-direction: column;
         align-items: center;
@@ -217,4 +217,4 @@ body {
         width: 100%;
         max-width: 350px;
     }
-} */
+}
