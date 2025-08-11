@@ -112,11 +112,13 @@ function selectDate(year, month, day) {
     renderTasks(dateString);
     
     // Highlight selected date
-    document.querySelectorAll('.days div').forEach(d => d.classList.remove('selected'));
-    const selectedDayEl = document.querySelector(`[data-date="${dateString}"]`);
-    if (selectedDayEl) {
-        selectedDayEl.style.backgroundColor = '#444';
-    }
+   document.querySelectorAll('.days div').forEach(d => d.classList.remove('selected'));
+
+// Add 'selected' class to clicked date
+const selectedDayEl = document.querySelector(`[data-date="${dateString}"]`);
+if (selectedDayEl) {
+    selectedDayEl.classList.add('selected');
+}
 }
 
 function renderTasks(dateString) {
