@@ -24,6 +24,28 @@ document.addEventListener('DOMContentLoaded', function () {
     let tasks = {}; // Store tasks in memory
     let taskIdCounter = 0;
 
+
+
+    // ✅ Load tasks from localStorage
+    function loadTasksFromStorage() {
+        const storedTasks = localStorage.getItem('calendarTasks');
+        if (storedTasks) {
+          tasks = JSON.parse(storedTasks);
+        }
+        const storedCounter = localStorage.getItem('taskIdCounter');
+        if (storedCounter) {
+            taskIdCounter = parseInt(storedCounter, 10);
+        }
+    }
+
+    // ✅ Save tasks to localStorage
+    function saveTasksToStorage() {
+        localStorage.setItem('calendarTasks', JSON.stringify(tasks));
+        localStorage.setItem('taskIdCounter', taskIdCounter.toString());
+    }
+
+
+
     function renderCalendar(date) {
         const year = date.getFullYear();
         const month = date.getMonth();
@@ -179,6 +201,7 @@ function addTask() {
         completed: false
     });
     
+    saveTasksToStorage();
     taskInput.value = '';
     renderTasks(dateString);
     renderCalendar(currentDate); // Re-render to show task indicator
@@ -189,6 +212,7 @@ function toggleTask(dateString, taskId) {
     const task = dayTasks.find(t => t.id === taskId);
     if (task) {
         task.completed = !task.completed;
+        saveTasksToStorage();
         renderTasks(dateString);
     }
 }
@@ -198,6 +222,7 @@ function deleteTask(dateString, taskId) {
     if (tasks[dateString].length === 0) {
         delete tasks[dateString];
     }
+    saveTasksToStorage();
     renderTasks(dateString);
     renderCalendar(currentDate); // Re-render to remove task indicator if needed
 }
@@ -224,4 +249,7 @@ function deleteTask(dateString, taskId) {
             addTask();
         }
     });
+    // ✅ Initialize app
+    loadTasksFromStorage();
+    renderCalendar(currentDate);
 });
